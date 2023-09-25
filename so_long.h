@@ -6,7 +6,7 @@
 /*   By: vdenisse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 14:25:10 by vdenisse          #+#    #+#             */
-/*   Updated: 2023/08/10 12:36:07 by vdenisse         ###   ########.fr       */
+/*   Updated: 2023/09/25 13:14:20 by vdenisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,11 +96,20 @@ typedef struct	s_data {
 	int	max_x;
 	int	max_y;
 }				t_data;
+
+//creation
+t_tiles	*tiles_init(void);
+void	create_images(t_data *data);
+
+
 void	cleanup(t_data *data);
 void	loop(void);
 void	texture_print(void);
 int	map_parse(t_data **data , char *map_src, t_tiles *tiles);
 int	map_check(int x, int y, t_data *data);
+int	map_flood_check(t_map **map, int x, int y, t_tiles *tiles);
+int	check_extension(char *map_src);
+t_tile	*get_tile(char c, t_tiles *tiles);
 void	free_map(t_data *data, t_map **map);
 void	map_seg_free(t_map_seg **map_seg);
 void	tiles_free(t_tiles *tiles);

@@ -6,11 +6,23 @@
 /*   By: vdenisse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 10:52:56 by vdenisse          #+#    #+#             */
-/*   Updated: 2023/08/10 15:37:03 by vdenisse         ###   ########.fr       */
+/*   Updated: 2023/09/25 13:10:45 by vdenisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
+
+void	free_map(t_data *data, t_map **map)
+{
+	int	i;
+
+	i = 0;
+	while (i < data->max_y)
+	{
+		free(map[i++]);
+	}
+	free(map);
+}
 
 void	destroy_images(t_data *data, t_tiles *tiles)
 {

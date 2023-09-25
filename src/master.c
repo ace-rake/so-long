@@ -6,34 +6,11 @@
 /*   By: vdenisse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 10:30:12 by vdenisse          #+#    #+#             */
-/*   Updated: 2023/09/05 12:08:52 by vdenisse         ###   ########.fr       */
+/*   Updated: 2023/09/25 11:18:38 by vdenisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
-
-void	create_image(t_data *data, t_tile *tile)
-{
-	tile->img = mlx_xpm_file_to_image(data->mlx, tile->texture_path,
-			&data->texture_size, &data->texture_size);
-}
-
-void	create_images(t_data *data)
-{
-	t_tiles	*tiles;
-
-	tiles = data->tiles;
-	create_image(data, tiles->obstacle);
-	create_image(data, tiles->empty);
-	create_image(data, tiles->collectible);
-	create_image(data, tiles->player->up);
-	create_image(data, tiles->player->right);
-	create_image(data, tiles->player->down);
-	create_image(data, tiles->player->left);
-	create_image(data, tiles->start);
-	create_image(data, tiles->end);
-	create_image(data, tiles->flooded);
-}
 
 int	collectible_count(t_data *data, t_map **map)
 {

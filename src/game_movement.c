@@ -6,12 +6,12 @@
 /*   By: vdenisse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 11:30:09 by vdenisse          #+#    #+#             */
-/*   Updated: 2023/08/10 15:48:42 by vdenisse         ###   ########.fr       */
+/*   Updated: 2023/09/25 13:09:33 by vdenisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
-
+/*
 int	player_finder_seg(t_data *data, int *y, int *x)
 {
 	*y = 0;
@@ -30,26 +30,7 @@ int	player_finder_seg(t_data *data, int *y, int *x)
 	}
 	return (0);
 }
-
-int	finder(t_data *data, int *y, int *x, char code)
-{
-	*y = 0;
-	while (*y < data->max_y)
-	{
-		*x = 0;
-		while (*x < data->max_x)
-		{
-			if (data->map[*y][*x].tile->code == code)
-			{
-				return (1);
-			}
-			(*x)++;
-		}
-		(*y)++;
-	}
-	return (0);
-}
-
+*/
 int	move_invalid(t_data *data, int move)
 {
 	int	x;
@@ -130,6 +111,7 @@ int	move_player(t_data *data, int move)
 	return (0);
 }
 
+/*
 int	move_start_no_tex(t_data *data, int move)
 {
 	if (move_invalid(data, move))
@@ -140,7 +122,7 @@ int	move_start_no_tex(t_data *data, int move)
 	move_player(data, move);
 	return (0);
 }
-
+*/
 int	move_start(t_data *data, int move)
 {
 	int	x;
