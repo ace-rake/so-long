@@ -6,7 +6,7 @@
 /*   By: vdenisse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 14:25:10 by vdenisse          #+#    #+#             */
-/*   Updated: 2023/09/27 15:42:54 by vdenisse         ###   ########.fr       */
+/*   Updated: 2023/10/16 11:06:39 by vdenisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include <stddef.h>
 # include <fcntl.h>
 # include "src/gln/get_next_line.h"
-# include "src/libft/libft.h"
+# include "src/libft/header/libft.h"
 /*
  *	delete_this
  *

@@ -6,7 +6,7 @@
 /*   By: vdenisse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 10:44:54 by vdenisse          #+#    #+#             */
-/*   Updated: 2023/09/05 12:09:24 by vdenisse         ###   ########.fr       */
+/*   Updated: 2023/10/16 11:21:58 by vdenisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@ void	move_handle(int keycode, t_data **data_src)
 {
 	int	move;
 
-	if (keycode == 'w')
+	if (keycode == 'w' || keycode == 65362)
 		move = UP;
-	else if (keycode == 'a')
+	else if (keycode == 'a' || keycode == 65361)
 		move = LEFT;
-	else if (keycode == 's')
+	else if (keycode == 's' || keycode == 65364)
 		move = DOWN;
-	else if (keycode == 'd')
+	else if (keycode == 'd' || keycode == 65363)
 		move = RIGHT;
 	else
 		move = 0;
@@ -41,10 +41,11 @@ int	key_handle_game(int keycode, t_data **data_src)
 		return (0);
 	}
 	else if (keycode == 'w' || keycode == 'a' || keycode == 's'
-		|| keycode == 'd')
+		|| keycode == 'd' || keycode == 65361 || keycode == 65362
+		|| keycode == 65363 || keycode == 65364)
 		move_handle(keycode, data_src);
 	else
-		printf("%c was pressed but nothing is bound\n", keycode);
+		printf("%c:%d was pressed but nothing is bound\n", keycode, keycode);
 	return (1);
 }
 
