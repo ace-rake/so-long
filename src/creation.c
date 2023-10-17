@@ -6,13 +6,13 @@
 /*   By: vdenisse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 11:16:08 by vdenisse          #+#    #+#             */
-/*   Updated: 2023/09/25 11:17:53 by vdenisse         ###   ########.fr       */
+/*   Updated: 2023/10/17 10:26:44 by vdenisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-t_tile	*tile_constructor(char code, char *texture_path)
+static t_tile	*tile_constructor(char code, char *texture_path)
 {
 	t_tile	*tile;
 
@@ -24,7 +24,7 @@ t_tile	*tile_constructor(char code, char *texture_path)
 	return (tile);
 }
 
-t_tile_set	*player_set_constructor(char code)
+static t_tile_set	*player_set_constructor(char code)
 {
 	t_tile_set	*pts;
 
@@ -51,7 +51,7 @@ t_tiles	*tiles_init(void)
 	return (tiles);
 }
 
-void	create_image(t_data *data, t_tile *tile)
+static void	create_image(t_data *data, t_tile *tile)
 {
 	tile->img = mlx_xpm_file_to_image(data->mlx, tile->texture_path,
 			&data->texture_size, &data->texture_size);

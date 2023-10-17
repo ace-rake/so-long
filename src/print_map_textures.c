@@ -6,13 +6,13 @@
 /*   By: vdenisse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 10:30:16 by vdenisse          #+#    #+#             */
-/*   Updated: 2023/08/10 15:54:23 by vdenisse         ###   ########.fr       */
+/*   Updated: 2023/10/17 10:41:22 by vdenisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-int	update_screen(t_data **data_src, int missing)
+int	update_screen(t_data **data_src)
 {
 	int		y;
 	int		x;
@@ -36,6 +36,5 @@ int	update_screen(t_data **data_src, int missing)
 		}
 		y++;
 	}
-	(void)missing;
 	return (0);
 }

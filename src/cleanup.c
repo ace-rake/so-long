@@ -6,7 +6,7 @@
 /*   By: vdenisse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 10:52:56 by vdenisse          #+#    #+#             */
-/*   Updated: 2023/09/25 13:10:45 by vdenisse         ###   ########.fr       */
+/*   Updated: 2023/10/17 10:26:00 by vdenisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	free_map(t_data *data, t_map **map)
 	free(map);
 }
 
-void	destroy_images(t_data *data, t_tiles *tiles)
+static void	destroy_images(t_data *data, t_tiles *tiles)
 {
 	mlx_destroy_image(data->mlx, tiles->obstacle->img);
 	mlx_destroy_image(data->mlx, tiles->empty->img);

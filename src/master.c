@@ -6,7 +6,7 @@
 /*   By: vdenisse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 10:30:12 by vdenisse          #+#    #+#             */
-/*   Updated: 2023/09/25 11:18:38 by vdenisse         ###   ########.fr       */
+/*   Updated: 2023/10/17 10:43:08 by vdenisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,7 @@ int	game_start(t_data **data_src)
 	place_player(data);
 	map_seg = get_map_segment(data, 1);
 	data->map_seg = map_seg;
-	print_map_seg(map_seg, 8, 15);
-	update_screen(data_src, 0);
+	update_screen(data_src);
 	mlx_key_hook(data->win, key_handle_game, data_src);
 	mlx_hook(data->win, 17, 0, click_close, &data);
 	mlx_loop(data->mlx);

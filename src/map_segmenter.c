@@ -6,12 +6,12 @@
 /*   By: vdenisse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 10:13:51 by vdenisse          #+#    #+#             */
-/*   Updated: 2023/08/10 15:52:35 by vdenisse         ###   ########.fr       */
+/*   Updated: 2023/10/17 10:47:15 by vdenisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
-
+/*
 void	print_map_seg(t_map_seg **map_seg, int max_y, int max_x)
 {
 	int	iter;
@@ -34,7 +34,7 @@ void	print_map_seg(t_map_seg **map_seg, int max_y, int max_x)
 		printf("\n");
 	}
 }
-
+*/
 t_map_seg	**map_seg_malloc(int y, int x)
 {
 	t_map_seg	**map_seg;

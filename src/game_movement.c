@@ -6,7 +6,7 @@
 /*   By: vdenisse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 11:30:09 by vdenisse          #+#    #+#             */
-/*   Updated: 2023/09/25 13:09:33 by vdenisse         ###   ########.fr       */
+/*   Updated: 2023/10/17 10:42:13 by vdenisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,6 +137,6 @@ int	move_start(t_data *data, int move)
 		data->game_info.collectibles_collected,
 		data->game_info.total_collectibles);
 	data->map_seg = get_map_segment(data, 0);
-	update_screen(&data, 0);
+	update_screen(&data);
 	return (0);
 }

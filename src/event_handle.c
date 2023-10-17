@@ -6,7 +6,7 @@
 /*   By: vdenisse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 10:44:54 by vdenisse          #+#    #+#             */
-/*   Updated: 2023/10/16 11:21:58 by vdenisse         ###   ########.fr       */
+/*   Updated: 2023/10/17 10:41:54 by vdenisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,10 +63,10 @@ int	key_handle(int keycode, t_data **data_src)
 	else if (keycode == 't')
 	{
 		(*data_src)->map_seg = get_map_segment(*data_src, 1);
-		update_screen(data_src, 0);
+		update_screen(data_src);
 	}
 	else if (keycode == 'm')
-		update_screen(data_src, 1);
+		update_screen(data_src);
 	else if (keycode == 'p')
 		game_start(data_src);
 	else
