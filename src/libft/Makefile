@@ -39,7 +39,8 @@ SRC :=		src/ft_atoi.c\
 			src/ft_putchar_fd.c\
 			src/ft_putstr_fd.c\
 			src/ft_putendl_fd.c\
-			src/ft_putnbr_fd.c
+			src/ft_putnbr_fd.c\
+			src/ft_free_array.c
 
 SRCB =		src/ft_lstnew.c\
 			src/ft_lstadd_front.c\
@@ -58,7 +59,7 @@ OBJB =		$(SRCB:%.c=$(OBJDIR)/%.o)
 
 all:		$(NAME)
 
-$(NAME):	$(OBJ) $(HEADERS)
+$(NAME):	$(OBJ) $(OBJB) $(HEADERS)
 				@$(AR) $(ARFLAGS) $(NAME) $^
 				@echo "compiling $@"
 
