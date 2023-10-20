@@ -6,7 +6,7 @@
 #    By: vdenisse <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/10 13:26:32 by vdenisse          #+#    #+#              #
-#    Updated: 2023/10/16 11:07:47 by vdenisse         ###   ########.fr        #
+#    Updated: 2023/10/20 16:50:24 by vdenisse         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,9 +31,6 @@ TEST_OBJS := $(TEST_SRC:%.c=$(OBJDIR)/%.o)
 NEC_OBJS = $(SRC_OBJS) $(GNL_OBJS)
 
 all: $(NAME)
-
-%.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
 
 $(OBJDIR)/%.o: %.c $(HEADERS)
 	@mkdir -p $(@D)

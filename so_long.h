@@ -6,7 +6,7 @@
 /*   By: vdenisse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 14:25:10 by vdenisse          #+#    #+#             */
-/*   Updated: 2023/10/17 10:43:29 by vdenisse         ###   ########.fr       */
+/*   Updated: 2023/10/20 15:31:28 by vdenisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,17 @@
 # define UP -10
 # define DOWN 10
 
+# define PLAYER "rat"
+# define EXTENSION ".xpm"
+# define TEXTURE_SIZE "128x128"
+# define TEXTURE_INT 128
+# define WINDOW_HEIGHT TEXTURE_INT * 8
+# define WINDOW_WIDTH TEXTURE_INT * 15
+# define PLAYER_UP PLAYER "-up_" TEXTURE_SIZE EXTENSION
 
+# define IMAGE_CREATION_ERR 515
+# define EXTENTION_ERR 844
+# define DIMENSION_ERR 525
 
 typedef struct s_tile {
 	char	code;
@@ -68,13 +78,6 @@ typedef	struct	s_map_seg{
 	int	curr_y;
 	int	to_update;
 }				t_map_seg;
-typedef struct s_img_data {
-	char addr;
-	int	bits_per_pixel;
-	int line_length;
-	int endian;
-	char *image_data;
-}				t_img_data;
 typedef struct s_game_info{
 	int	step_count;
 	int	total_collectibles;
@@ -85,7 +88,6 @@ typedef struct	s_data {
 	void	*mlx;
 	void	*win;
 	void	*img;
-	t_img_data img_data;
 	t_tiles *tiles;
 	t_game_info game_info;
 	int	width;
@@ -104,7 +106,7 @@ void	tiles_free(t_tiles *tiles);
 
 //creation.c
 t_tiles	*tiles_init(void);
-void	create_images(t_data *data);
+int	create_images(t_data *data);
 
 //event_handle.c
 int	click_close(t_data **data_src);

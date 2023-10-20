@@ -6,7 +6,7 @@
 /*   By: vdenisse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 10:30:12 by vdenisse          #+#    #+#             */
-/*   Updated: 2023/10/17 10:43:08 by vdenisse         ###   ########.fr       */
+/*   Updated: 2023/10/20 15:08:49 by vdenisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,14 @@ int	collectible_count(t_data *data, t_map **map)
 int	master(t_data *data)
 {
 	data->mlx = mlx_init();
-	data->win = mlx_new_window(data->mlx, 1920, 1024, "so_long");
+	data->width = WINDOW_WIDTH;
+	data->height = WINDOW_HEIGHT;
+	data->texture_size = TEXTURE_INT;
+	data->win = mlx_new_window(data->mlx, data->width, data->height, "so_long");
 	data->img = NULL;
-	data->width = 1920;
-	data->height = 1024;
-	data->texture_size = 128;
 	data->game_info.step_count = 0;
-	create_images(data);
+	if (create_images(data))
+		return (IMAGE_CREATION_ERR);
 	data->game_info.total_collectibles = collectible_count(data, data->map);
 	data->game_info.collectibles_collected = 0;
 	data->game_info.stand_on_tile = data->tiles->start;

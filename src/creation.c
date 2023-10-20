@@ -6,7 +6,7 @@
 /*   By: vdenisse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 11:16:08 by vdenisse          #+#    #+#             */
-/*   Updated: 2023/10/17 10:26:44 by vdenisse         ###   ########.fr       */
+/*   Updated: 2023/10/20 17:02:43 by vdenisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ static t_tile_set	*player_set_constructor(char code)
 	t_tile_set	*pts;
 
 	pts = (t_tile_set *)malloc(sizeof(t_tile_set));
-	pts->up = tile_constructor(code, "rat-up_128x128.xpm");
+	pts->up = tile_constructor(code, PLAYER "-up_" TEXTURE_SIZE EXTENSION
+);
 	pts->right = tile_constructor(code, "rat-right_128x128.xpm");
 	pts->down = tile_constructor(code, "rat-down_128x128.xpm");
 	pts->left = tile_constructor(code, "rat-left_128x128.xpm");
@@ -43,33 +44,45 @@ t_tiles	*tiles_init(void)
 	tiles = (t_tiles *)malloc (sizeof (t_tiles));
 	tiles->obstacle = tile_constructor('1', "wall_128x128.xpm");
 	tiles->empty = tile_constructor('0', "1.xpm");
-	tiles->collectible = tile_constructor('C', "cheese_128x128.xpm");
+	tiles->collectible = tile_constructor('C', "cheese_better_128x128.xpm");
 	tiles->player = player_set_constructor('R');
 	tiles->start = tile_constructor('P', "missing-texture_128x128.xpm");
 	tiles->end = tile_constructor('E', "missing-texture_128x128.xpm");
-	tiles->flooded = tile_constructor('2', "cheese_128x128.xpm");
+	tiles->flooded = tile_constructor('2', "cheese_better_128x128.xpm");
 	return (tiles);
 }
 
-static void	create_image(t_data *data, t_tile *tile)
+static int	create_image(t_data *data, t_tile *tile)
 {
 	tile->img = mlx_xpm_file_to_image(data->mlx, tile->texture_path,
 			&data->texture_size, &data->texture_size);
+	if (tile->img == NULL)
+		return (1);
+	return (0);
 }
 
-void	create_images(t_data *data)
+int	create_images(t_data *data)
 {
 	t_tiles	*tiles;
 
 	tiles = data->tiles;
-	create_image(data, tiles->obstacle);
-	create_image(data, tiles->empty);
-	create_image(data, tiles->collectible);
-	create_image(data, tiles->player->up);
-	create_image(data, tiles->player->right);
-	create_image(data, tiles->player->down);
-	create_image(data, tiles->player->left);
-	create_image(data, tiles->start);
-	create_image(data, tiles->end);
-	create_image(data, tiles->flooded);
+	if (create_image(data, tiles->obstacle))
+		return (1);
+	if (create_image(data, tiles->empty))
+		return (1);
+	if (create_image(data, tiles->collectible))
+		return (1);
+	if (create_image(data, tiles->player->up))
+		return (1);
+	if (create_image(data, tiles->player->right))
+		return (1);
+	if (create_image(data, tiles->player->down))
+		return (1);
+	if (create_image(data, tiles->player->left))
+		return (1);
+	if (create_image(data, tiles->start))
+		return (1);
+	if (create_image(data, tiles->end))
+		return (1);
+	return (create_image(data, tiles->flooded));
 }

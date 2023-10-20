@@ -6,7 +6,7 @@
 /*   By: vdenisse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 14:14:40 by vdenisse          #+#    #+#             */
-/*   Updated: 2023/09/25 13:14:41 by vdenisse         ###   ########.fr       */
+/*   Updated: 2023/10/20 15:15:14 by vdenisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,7 +137,7 @@ int	map_parse(t_data **data_src, char *map_src, t_tiles *tiles)
 	data = *data_src;
 	data->map = map;
 	if (check_extension(map_src))
-		return (1);
+		return (844);
 	if (get_dimensions(map_src, &data->max_x, &data->max_y))
 		return (1);
 	if (malloc_map(&data->map, data->max_x, data->max_y))

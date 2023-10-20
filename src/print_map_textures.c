@@ -6,7 +6,7 @@
 /*   By: vdenisse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 10:30:16 by vdenisse          #+#    #+#             */
-/*   Updated: 2023/10/17 10:41:22 by vdenisse         ###   ########.fr       */
+/*   Updated: 2023/10/20 10:10:30 by vdenisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,11 @@ int	update_screen(t_data **data_src)
 		{
 			if (data->map_seg[y][x].oob == 0)
 				mlx_put_image_to_window(data->mlx, data->win,
-					data->map_seg[y][x].map_src->tile->img, x * 128, y
-					* 128);
+					data->map_seg[y][x].map_src->tile->img, x * data->texture_size, y
+					* data->texture_size);
 			else
 				mlx_put_image_to_window(data->mlx, data->win,
-					data->tiles->flooded->img, x * 128, y * 128);
+					data->tiles->flooded->img, x * data->texture_size, y * data->texture_size);
 			x++;
 		}
 		y++;
