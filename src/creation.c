@@ -6,7 +6,7 @@
 /*   By: vdenisse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 11:16:08 by vdenisse          #+#    #+#             */
-/*   Updated: 2023/10/23 13:48:29 by vdenisse         ###   ########.fr       */
+/*   Updated: 2023/10/23 15:51:16 by vdenisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ t_tiles	*tiles_init(void)
 	tiles->player = player_set_constructor('R', "rat");
 	tiles->start = tile_constructor('P', "sewer_no_rat_128x128.xpm");
 	tiles->end = tile_constructor('E', "sewer_no_rat_128x128.xpm");
-	tiles->flooded = tile_constructor('2', "cheese_better_128x128.xpm");
+	tiles->flooded = tile_constructor('2', "toxic_waste_128x128.xpm");
 	tiles->full = tile_constructor(0, "sewer_rat_128x128.xpm");
 	return (tiles);
 }

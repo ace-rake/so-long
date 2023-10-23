@@ -6,7 +6,7 @@
 /*   By: vdenisse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 10:30:16 by vdenisse          #+#    #+#             */
-/*   Updated: 2023/10/23 14:00:52 by vdenisse         ###   ########.fr       */
+/*   Updated: 2023/10/23 15:52:09 by vdenisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	update_screen(t_data **data_src)
 			}
 			else
 				mlx_put_image_to_window(data->mlx, data->win,
-					data->tiles->obstacle->img, x * data->texture_size, y * data->texture_size);
+					data->tiles->flooded->img, x * data->texture_size, y * data->texture_size);
 			x++;
 		}
 		y++;
