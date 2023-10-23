@@ -6,7 +6,7 @@
 /*   By: vdenisse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 11:16:08 by vdenisse          #+#    #+#             */
-/*   Updated: 2023/10/20 17:02:43 by vdenisse         ###   ########.fr       */
+/*   Updated: 2023/10/23 13:48:29 by vdenisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static t_tile	*tile_constructor(char code, char *texture_path)
 	return (tile);
 }
 
-static t_tile_set	*player_set_constructor(char code)
+static t_tile_set	*player_set_constructor(char code, char *name)
 {
 	t_tile_set	*pts;
 
@@ -34,6 +34,7 @@ static t_tile_set	*player_set_constructor(char code)
 	pts->right = tile_constructor(code, "rat-right_128x128.xpm");
 	pts->down = tile_constructor(code, "rat-down_128x128.xpm");
 	pts->left = tile_constructor(code, "rat-left_128x128.xpm");
+	(void)name;
 	return (pts);
 }
 
@@ -45,10 +46,11 @@ t_tiles	*tiles_init(void)
 	tiles->obstacle = tile_constructor('1', "wall_128x128.xpm");
 	tiles->empty = tile_constructor('0', "1.xpm");
 	tiles->collectible = tile_constructor('C', "cheese_better_128x128.xpm");
-	tiles->player = player_set_constructor('R');
-	tiles->start = tile_constructor('P', "missing-texture_128x128.xpm");
-	tiles->end = tile_constructor('E', "missing-texture_128x128.xpm");
+	tiles->player = player_set_constructor('R', "rat");
+	tiles->start = tile_constructor('P', "sewer_no_rat_128x128.xpm");
+	tiles->end = tile_constructor('E', "sewer_no_rat_128x128.xpm");
 	tiles->flooded = tile_constructor('2', "cheese_better_128x128.xpm");
+	tiles->full = tile_constructor(0, "sewer_rat_128x128.xpm");
 	return (tiles);
 }
 
@@ -83,6 +85,8 @@ int	create_images(t_data *data)
 	if (create_image(data, tiles->start))
 		return (1);
 	if (create_image(data, tiles->end))
+		return (1);
+	if (create_image(data, tiles->full))
 		return (1);
 	return (create_image(data, tiles->flooded));
 }

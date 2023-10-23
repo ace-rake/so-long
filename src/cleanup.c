@@ -6,7 +6,7 @@
 /*   By: vdenisse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 10:52:56 by vdenisse          #+#    #+#             */
-/*   Updated: 2023/10/20 16:19:26 by vdenisse         ###   ########.fr       */
+/*   Updated: 2023/10/23 14:43:36 by vdenisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ static void	destroy_images(t_data *data, t_tiles *tiles)
 		mlx_destroy_image(data->mlx, tiles->end->img);
 	if (tiles->flooded->img != NULL)
 		mlx_destroy_image(data->mlx, tiles->flooded->img);
+	if (tiles->full->img != NULL)
+		mlx_destroy_image(data->mlx, tiles->full->img);
 }
 
 void	ft_free_tile(t_tile *tile)
@@ -77,6 +79,7 @@ void	tiles_free(t_tiles *tiles)
 	ft_free_tile(tiles->start);
 	ft_free_tile(tiles->end);
 	ft_free_tile(tiles->flooded);
+	ft_free_tile(tiles->full);
 	if (tiles)
 		free(tiles);
 }

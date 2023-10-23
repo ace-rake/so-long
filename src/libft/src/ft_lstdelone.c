@@ -14,5 +14,5 @@
 
 void	ft_lstdelone(t_list *lst)
 {
-	free (lst);
+	free(lst);
 }

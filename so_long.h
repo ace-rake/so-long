@@ -6,7 +6,7 @@
 /*   By: vdenisse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 14:25:10 by vdenisse          #+#    #+#             */
-/*   Updated: 2023/10/20 15:31:28 by vdenisse         ###   ########.fr       */
+/*   Updated: 2023/10/23 13:45:09 by vdenisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@
 # define WINDOW_HEIGHT TEXTURE_INT * 8
 # define WINDOW_WIDTH TEXTURE_INT * 15
 # define PLAYER_UP PLAYER "-up_" TEXTURE_SIZE EXTENSION
+# define TEST "%s%s" TEXTURE_SIZE EXTENSION
 
 # define IMAGE_CREATION_ERR 515
 # define EXTENTION_ERR 844
@@ -48,6 +49,7 @@ typedef struct s_tile {
 	char	code;
 	char *texture_path;
 	void *img;
+	int	info;
 }				t_tile;
 
 typedef struct s_tile_set	{
@@ -64,6 +66,7 @@ typedef struct s_tiles{
 	t_tile_set	*player;
 	t_tile	*start;
 	t_tile	*end;
+	t_tile	*full;
 	t_tile	*flooded;
 }				t_tiles;
 typedef struct s_map {

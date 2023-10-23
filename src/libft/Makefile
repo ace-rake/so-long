@@ -40,7 +40,8 @@ SRC :=		src/ft_atoi.c\
 			src/ft_putstr_fd.c\
 			src/ft_putendl_fd.c\
 			src/ft_putnbr_fd.c\
-			src/ft_free_array.c
+			src/ft_free_array.c\
+			src/ft_strform.c
 
 SRCB =		src/ft_lstnew.c\
 			src/ft_lstadd_front.c\
@@ -55,7 +56,7 @@ SRCB =		src/ft_lstnew.c\
 
 OBJDIR:=	obj
 OBJ :=		$(SRC:%.c=$(OBJDIR)/%.o)
-OBJB =		$(SRCB:%.c=$(OBJDIR)/%.o)
+OBJB :=		$(SRCB:%.c=$(OBJDIR)/%.o)
 
 all:		$(NAME)
 
