@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "../so_long.h"
+
 /*
 void	print_map_seg(t_map_seg **map_seg, int max_y, int max_x)
 {

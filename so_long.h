@@ -6,7 +6,7 @@
 /*   By: vdenisse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 14:25:10 by vdenisse          #+#    #+#             */
-/*   Updated: 2023/10/23 13:45:09 by vdenisse         ###   ########.fr       */
+/*   Updated: 2023/11/02 14:11:57 by vdenisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,12 +44,13 @@
 # define IMAGE_CREATION_ERR 515
 # define EXTENTION_ERR 844
 # define DIMENSION_ERR 525
+# define MAP_CONTENT_ERR 1028
+# define INVALID_NAME_ERR 1063
 
 typedef struct s_tile {
 	char	code;
 	char *texture_path;
 	void *img;
-	int	info;
 }				t_tile;
 
 typedef struct s_tile_set	{
@@ -106,6 +107,7 @@ typedef struct	s_data {
 void	cleanup(t_data *data);
 void	free_map(t_data *data, t_map **map);
 void	tiles_free(t_tiles *tiles);
+void	destroy_images(t_data *data, t_tiles *tiles);
 
 //creation.c
 t_tiles	*tiles_init(void);

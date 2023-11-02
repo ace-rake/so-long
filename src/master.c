@@ -6,7 +6,7 @@
 /*   By: vdenisse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 10:30:12 by vdenisse          #+#    #+#             */
-/*   Updated: 2023/10/20 15:08:49 by vdenisse         ###   ########.fr       */
+/*   Updated: 2023/10/30 11:00:16 by vdenisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	master(t_data *data)
 		return (IMAGE_CREATION_ERR);
 	data->game_info.total_collectibles = collectible_count(data, data->map);
 	data->game_info.collectibles_collected = 0;
-	data->game_info.stand_on_tile = data->tiles->start;
+	data->game_info.stand_on_tile = data->tiles->empty;
 	game_start(&data);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: vdenisse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 09:32:46 by vdenisse          #+#    #+#             */
-/*   Updated: 2023/10/20 15:32:04 by vdenisse         ###   ########.fr       */
+/*   Updated: 2023/11/02 14:12:32 by vdenisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,23 @@ void	ft_perror(int err)
 {
 	if (err == IMAGE_CREATION_ERR)
 		write(1, "image_creation_error\n", 21);
-	if (err == EXTENTION_ERR)
+	else if (err == EXTENTION_ERR)
 		write(1, "extention_error\n", 16);
-	if (err == DIMENSION_ERR)
+	else if (err == DIMENSION_ERR)
 		write(1, "dimension_error\n", 16);
+	else if (err == MAP_CONTENT_ERR)
+		write(1, "map_content_error\n", 18);
+	else if (err == INVALID_NAME_ERR)
+		write(1, "invalid_name_error\n", 19);
+	else
+		write(1, "Error\n", 6);
 }
 
 int	main(int argc, char *argv[])
 {
 	t_tiles	*tiles;
 	t_data	*data;
-	int	returns;
+	int		returns;
 
 	if (argc != 2)
 		return (0);

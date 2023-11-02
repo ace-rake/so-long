@@ -29,8 +29,7 @@ static t_tile_set	*player_set_constructor(char code, char *name)
 	t_tile_set	*pts;
 
 	pts = (t_tile_set *)malloc(sizeof(t_tile_set));
-	pts->up = tile_constructor(code, PLAYER "-up_" TEXTURE_SIZE EXTENSION
-);
+	pts->up = tile_constructor(code, PLAYER "-up_" TEXTURE_SIZE EXTENSION);
 	pts->right = tile_constructor(code, "rat-right_128x128.xpm");
 	pts->down = tile_constructor(code, "rat-down_128x128.xpm");
 	pts->left = tile_constructor(code, "rat-left_128x128.xpm");
@@ -42,7 +41,7 @@ t_tiles	*tiles_init(void)
 {
 	t_tiles	*tiles;
 
-	tiles = (t_tiles *)malloc (sizeof (t_tiles));
+	tiles = (t_tiles *)malloc(sizeof(t_tiles));
 	tiles->obstacle = tile_constructor('1', "wall_128x128.xpm");
 	tiles->empty = tile_constructor('0', "1.xpm");
 	tiles->collectible = tile_constructor('C', "cheese_better_128x128.xpm");

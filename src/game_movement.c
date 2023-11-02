@@ -6,11 +6,12 @@
 /*   By: vdenisse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 11:30:09 by vdenisse          #+#    #+#             */
-/*   Updated: 2023/10/17 10:42:13 by vdenisse         ###   ########.fr       */
+/*   Updated: 2023/10/25 15:57:53 by vdenisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
+
 /*
 int	player_finder_seg(t_data *data, int *y, int *x)
 {

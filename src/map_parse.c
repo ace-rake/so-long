@@ -6,12 +6,13 @@
 /*   By: vdenisse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 14:14:40 by vdenisse          #+#    #+#             */
-/*   Updated: 2023/10/20 15:15:14 by vdenisse         ###   ########.fr       */
+/*   Updated: 2023/10/25 15:57:27 by vdenisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 #include <fcntl.h>
+
 /*
 void	print_map(t_map *map[], int x, int y)
 {
@@ -132,19 +133,24 @@ int	map_parse(t_data **data_src, char *map_src, t_tiles *tiles)
 {
 	t_map	**map;
 	t_data	*data;
+	int		fd;
 
 	map = NULL;
 	data = *data_src;
 	data->map = map;
+	fd = open(map_src, O_RDONLY);
+	close(fd);
+	if (fd == -1)
+		return (INVALID_NAME_ERR);
 	if (check_extension(map_src))
-		return (844);
+		return (EXTENTION_ERR);
 	if (get_dimensions(map_src, &data->max_x, &data->max_y))
-		return (1);
+		return (DIMENSION_ERR);
 	if (malloc_map(&data->map, data->max_x, data->max_y))
 		return (1);
 	if (map_to_map(data->map, map_src, tiles))
 		return (1);
 	if (map_check(data->max_x, data->max_y, data))
-		return (1);
+		return (MAP_CONTENT_ERR);
 	return (0);
 }
