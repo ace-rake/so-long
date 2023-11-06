@@ -6,11 +6,11 @@
 /*   By: vdenisse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 13:09:31 by vdenisse          #+#    #+#             */
-/*   Updated: 2023/09/25 13:14:07 by vdenisse         ###   ########.fr       */
+/*   Updated: 2023/11/06 11:38:40 by vdenisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long.h"
+#include "../so_long_bonus.h"
 
 int	finder(t_data *data, int *y, int *x, char code)
 {

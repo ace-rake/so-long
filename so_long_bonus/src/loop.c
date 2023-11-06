@@ -6,11 +6,11 @@
 /*   By: vdenisse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 13:12:12 by vdenisse          #+#    #+#             */
-/*   Updated: 2023/08/02 11:47:43 by vdenisse         ###   ########.fr       */
+/*   Updated: 2023/11/06 11:38:39 by vdenisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long.h"
+#include "../so_long_bonus.h"
 
 /*
 void	create_image(t_data *data_src)

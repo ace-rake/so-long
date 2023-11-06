@@ -6,11 +6,11 @@
 /*   By: vdenisse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 09:32:46 by vdenisse          #+#    #+#             */
-/*   Updated: 2023/11/02 14:12:32 by vdenisse         ###   ########.fr       */
+/*   Updated: 2023/11/06 13:39:37 by vdenisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 #include <stdio.h>
 
 void	ft_perror(int err)
@@ -29,6 +29,43 @@ void	ft_perror(int err)
 		write(1, "Error\n", 6);
 }
 
+t_handler	*handler_init(void)
+{
+	t_handler *handler;
+
+	handler = (t_handler *)malloc(sizeof(t_handler) * 1);
+	handler->done = (int *)malloc(sizeof(int) * 1);
+	*handler->done = 0;
+	handler->next_move = (int *)malloc(sizeof(int) * 1);
+	*handler->next_move = NONE;
+	handler->start = (int *)malloc(sizeof(int) * 1);
+	*handler->start = 0;
+	return (handler);
+}
+
+int	data_init(t_data **data_src)
+{
+	t_data *data;
+
+	data = (t_data *)malloc(sizeof(t_data) * 1);
+	if (!data)
+		return (1);
+	*data_src = data;
+	data->game_info.next_move = (int *)malloc(sizeof(int) * 1);
+	if (!data->game_info.next_move)
+		return (1);
+	*data->game_info.next_move = NONE;
+	data->handler = handler_init();
+	return (0);
+}
+
+#include <pthread.h>
+int	thread_init(t_data *data)
+{
+	pthread_create(&data->handler->thread, NULL, turn_handler, data);
+	return (0);
+}
+
 int	main(int argc, char *argv[])
 {
 	t_tiles	*tiles;
@@ -37,8 +74,12 @@ int	main(int argc, char *argv[])
 
 	if (argc != 2)
 		return (0);
-	data = (t_data *)malloc(sizeof(t_data));
 	tiles = tiles_init();
+	if (data_init(&data))
+	{
+		cleanup(data);
+		return (0);
+	}
 	data->tiles = tiles;
 	data->map = NULL;
 	returns = 0;

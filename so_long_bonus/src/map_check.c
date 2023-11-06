@@ -6,11 +6,11 @@
 /*   By: vdenisse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 10:04:54 by vdenisse          #+#    #+#             */
-/*   Updated: 2023/10/25 16:24:42 by vdenisse         ###   ########.fr       */
+/*   Updated: 2023/11/06 11:38:39 by vdenisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long.h"
+#include "../so_long_bonus.h"
 
 int	map_wall_check(t_map **map, int x, int y)
 {

@@ -6,11 +6,11 @@
 /*   By: vdenisse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 10:13:51 by vdenisse          #+#    #+#             */
-/*   Updated: 2023/10/17 10:47:15 by vdenisse         ###   ########.fr       */
+/*   Updated: 2023/11/06 11:38:39 by vdenisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long.h"
+#include "../so_long_bonus.h"
 
 /*
 void	print_map_seg(t_map_seg **map_seg, int max_y, int max_x)

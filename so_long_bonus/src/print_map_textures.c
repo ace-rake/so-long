@@ -6,11 +6,11 @@
 /*   By: vdenisse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 10:30:16 by vdenisse          #+#    #+#             */
-/*   Updated: 2023/10/25 16:19:37 by vdenisse         ###   ########.fr       */
+/*   Updated: 2023/11/06 11:38:40 by vdenisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long.h"
+#include "../so_long_bonus.h"
 
 void	print_single_texture(t_map_seg **map_seg, t_data *d, int x, int y)
 {

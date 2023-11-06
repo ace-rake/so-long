@@ -6,7 +6,7 @@
 #    By: vdenisse <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/10 13:26:32 by vdenisse          #+#    #+#              #
-#    Updated: 2023/11/06 10:01:51 by vdenisse         ###   ########.fr        #
+#    Updated: 2023/11/06 11:20:43 by vdenisse         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,7 +39,7 @@ $(OBJDIR)/%.o: %.c $(HEADERS)
 
 $(NAME): $(NEC_OBJS) $(OBJS)
 	@make -C src/libft
-	@$(CC) $(NEC_OBJS) $(OBJS) $(CFLAGS) -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -Lsrc/libft -lft -o $(NAME)
+	@$(CC) $(NEC_OBJS) $(OBJS) $(CFLAGS) -pthread -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -Lsrc/libft -lft -o $(NAME)
 	@echo "Compiled $@"
 
 test: $(NEC_OBJS) $(TEST_OBJS)

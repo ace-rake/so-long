@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   so_long_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vdenisse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 14:25:10 by vdenisse          #+#    #+#             */
-/*   Updated: 2023/11/06 10:29:27 by vdenisse         ###   ########.fr       */
+/*   Updated: 2023/11/06 14:26:37 by vdenisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <fcntl.h>
 # include "src/gln/get_next_line.h"
 # include "src/libft/header/libft.h"
+# include <pthread.h>
 /*
  *	delete_this
  *
@@ -88,14 +89,21 @@ typedef struct s_game_info{
 	int	total_collectibles;
 	int	collectibles_collected;
 	t_tile *stand_on_tile;
-	int	next_move;
+	int	*next_move;
 }				t_game_info;
+typedef struct	s_handler{
+	pthread_t thread;
+	int *next_move;
+	int	*done;
+	int	*start;
+}				t_handler;
 typedef struct	s_data {
 	void	*mlx;
 	void	*win;
 	void	*img;
 	t_tiles *tiles;
 	t_game_info game_info;
+	t_handler *handler;
 	int	width;
 	int	height;
 	int	texture_size;
@@ -148,7 +156,15 @@ int	check_extension(char *map_src);
 t_tile	*get_tile(char c, t_tiles *tiles);
 int	finder(t_data *data, int *y, int *x, char code);
 
+/*
+ * bonus start
+ */
 
+//turn_handler.c
+void	*turn_handler(void  *arg);
+int	check_end(t_game_info game_info);
+int	thread_init(t_data *data);
+void	exit_sequence(t_data *data);
 /*
 void	loop(void);
 void	texture_print(void);

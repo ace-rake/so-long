@@ -6,11 +6,11 @@
 /*   By: vdenisse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 11:30:09 by vdenisse          #+#    #+#             */
-/*   Updated: 2023/10/25 15:57:53 by vdenisse         ###   ########.fr       */
+/*   Updated: 2023/11/06 14:37:15 by vdenisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long.h"
+#include "../so_long_bonus.h"
 
 /*
 int	player_finder_seg(t_data *data, int *y, int *x)
@@ -81,7 +81,7 @@ int	check_end(t_game_info game_info)
 		printf("game_succes\n");
 		return (1);
 	}
-	printf("fuck outta here\n");
+	printf("there is still cheese to be eaten\n");
 	return (0);
 }
 
@@ -108,7 +108,9 @@ int	move_player(t_data *data, int move)
 	change_tiles(data, start, end, mv_cpy);
 	if (data->game_info.stand_on_tile == data->tiles->end)
 		if (check_end(data->game_info))
-			mlx_loop_end(data->mlx);
+		{
+			exit_sequence(data);
+		}
 	return (0);
 }
 
@@ -138,6 +140,6 @@ int	move_start(t_data *data, int move)
 		data->game_info.collectibles_collected,
 		data->game_info.total_collectibles);
 	data->map_seg = get_map_segment(data, 0);
-	update_screen(&data);
+//	update_screen(&data);
 	return (0);
 }

@@ -6,11 +6,11 @@
 /*   By: vdenisse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 10:52:56 by vdenisse          #+#    #+#             */
-/*   Updated: 2023/11/02 14:11:34 by vdenisse         ###   ########.fr       */
+/*   Updated: 2023/11/06 13:27:54 by vdenisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long.h"
+#include "../so_long_bonus.h"
 
 void	free_map(t_data *data, t_map **map)
 {
@@ -61,7 +61,7 @@ void	cleanup(t_data *data)
 {
 	if (data == NULL)
 		return ;
-	if (data->tiles->obstacle->img != NULL)
+	if (data->tiles != NULL)
 		destroy_images(data, data->tiles);
 	if (data->mlx != NULL)
 	{
@@ -69,6 +69,7 @@ void	cleanup(t_data *data)
 		mlx_destroy_display(data->mlx);
 		free(data->mlx);
 	}
+	pthread_join(data->handler->thread, NULL);
 	if (data->map)
 		free_map(data, data->map);
 	if (data->map_seg)

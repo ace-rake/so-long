@@ -6,11 +6,11 @@
 /*   By: vdenisse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 11:16:08 by vdenisse          #+#    #+#             */
-/*   Updated: 2023/10/23 15:51:16 by vdenisse         ###   ########.fr       */
+/*   Updated: 2023/11/06 11:38:39 by vdenisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long.h"
+#include "../so_long_bonus.h"
 
 static t_tile	*tile_constructor(char code, char *texture_path)
 {

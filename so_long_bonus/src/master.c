@@ -6,11 +6,11 @@
 /*   By: vdenisse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 10:30:12 by vdenisse          #+#    #+#             */
-/*   Updated: 2023/10/30 11:00:16 by vdenisse         ###   ########.fr       */
+/*   Updated: 2023/11/06 14:35:20 by vdenisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long.h"
+#include "../so_long_bonus.h"
 
 int	collectible_count(t_data *data, t_map **map)
 {
@@ -66,13 +66,13 @@ void	place_player(t_data *data)
 int	game_start(t_data **data_src)
 {
 	t_data		*data;
-	t_map_seg	**map_seg;
 
 	data = *data_src;
 	place_player(data);
-	map_seg = get_map_segment(data, 1);
-	data->map_seg = map_seg;
+	data->map_seg = get_map_segment(data, 1);
 	update_screen(data_src);
+	thread_init(data);
+	*data->handler->start = 1;
 	mlx_key_hook(data->win, key_handle_game, data_src);
 	mlx_hook(data->win, 17, 0, click_close, &data);
 	mlx_loop(data->mlx);
