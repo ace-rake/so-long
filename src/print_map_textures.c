@@ -6,7 +6,7 @@
 /*   By: vdenisse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 10:30:16 by vdenisse          #+#    #+#             */
-/*   Updated: 2023/10/25 16:19:37 by vdenisse         ###   ########.fr       */
+/*   Updated: 2023/11/08 09:47:48 by vdenisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,10 @@ int	update_screen(t_data **d_s)
 
 	d = *d_s;
 	y = 0;
-	while (y < 8)
+	while (y < TILE_HEIGHT)
 	{
 		x = 0;
-		while (x < 15)
+		while (x < TILE_WIDTH)
 		{
 			print_single_texture(d->map_seg, d, x, y);
 			x++;

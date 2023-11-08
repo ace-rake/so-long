@@ -6,7 +6,7 @@
 /*   By: vdenisse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 10:44:54 by vdenisse          #+#    #+#             */
-/*   Updated: 2023/10/25 15:58:23 by vdenisse         ###   ########.fr       */
+/*   Updated: 2023/11/08 11:07:38 by vdenisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ int	key_handle_game(int keycode, t_data **data_src)
 	data = *data_src;
 	if (keycode == 65307)
 	{
-		printf("esc pressed\n");
 		mlx_loop_end(data->mlx);
 		return (0);
 	}
@@ -44,17 +43,14 @@ int	key_handle_game(int keycode, t_data **data_src)
 		|| keycode == 'd' || keycode == 65361 || keycode == 65362
 		|| keycode == 65363 || keycode == 65364)
 		move_handle(keycode, data_src);
-	else
-		printf("%c:%d was pressed but nothing is bound\n", keycode, keycode);
 	return (1);
 }
-
+/*
 int	key_handle(int keycode, t_data **data_src)
 {
 	t_data	*data;
 
 	data = *data_src;
-	printf("%c was pressed\n", keycode);
 	if (keycode == 65307)
 	{
 		mlx_loop_end(data->mlx);
@@ -69,13 +65,9 @@ int	key_handle(int keycode, t_data **data_src)
 		update_screen(data_src);
 	else if (keycode == 'p')
 		game_start(data_src);
-	else
-	{
-		printf(" but nothing is bound\n");
-	}
 	return (1);
 }
-
+*/
 int	click_close(t_data **data_src)
 {
 	t_data	*data;

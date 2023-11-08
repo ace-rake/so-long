@@ -6,7 +6,7 @@
 /*   By: vdenisse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 10:04:54 by vdenisse          #+#    #+#             */
-/*   Updated: 2023/10/25 16:24:42 by vdenisse         ###   ########.fr       */
+/*   Updated: 2023/11/08 11:00:29 by vdenisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,20 +19,20 @@ int	map_wall_check(t_map **map, int x, int y)
 	i = 0;
 	while (i < x)
 		if (map[0][i++].tile->code != '1')
-			return (1);
+			return (INVALID_OUTER_WALL);
 	i = 0;
 	while (i < y)
 		if (map[i++][0].tile->code != '1')
-			return (1);
+			return (INVALID_OUTER_WALL);
 	i = 0;
 	while (i < x)
 		if (map[y - 1][i++].tile->code != '1')
-			return (1);
+			return (INVALID_OUTER_WALL);
 	i = 0;
 	while (i < y)
 		if (map[i++][x - 1].tile->code != '1')
-			return (1);
-	return (0);
+			return (INVALID_OUTER_WALL);
+	return (1);
 }
 
 int	check_tile(char code, int last_call)
@@ -75,12 +75,12 @@ int	map_content_check(t_map **map, int x, int y)
 		j = 0;
 		while (j < x)
 			if (check_tile(map[i][j++].tile->code, 0))
-				return (1);
+				return (INVALID_CONTENT);
 		i++;
 	}
 	if (check_tile(map[0][0].tile->code, 1))
-		return (1);
-	return (0);
+		return (INVALID_CONTENT);
+	return (1);
 }
 
 t_map	**copy_map(t_data *data)
@@ -102,14 +102,15 @@ t_map	**copy_map(t_data *data)
 int	map_check(int x, int y, t_data *data)
 {
 	t_map	**map_copy;
+	int		err;
 
 	map_copy = copy_map(data);
-	if (map_wall_check(map_copy, x, y) || map_content_check(map_copy, x, y)
-		|| map_flood_check(map_copy, x, y, data->tiles))
-	{
-		free_map(data, map_copy);
-		return (1);
-	}
+	err = 1;
+	err *= map_wall_check(map_copy, x, y);
+	err *= map_content_check(map_copy, x, y);
+	if (err % INVALID_OUTER_WALL == 0)
+		return (err);
+	err *= map_flood_check(map_copy, x, y, data->tiles);
 	free_map(data, map_copy);
-	return (0);
+	return (err);
 }

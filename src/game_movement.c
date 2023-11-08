@@ -6,7 +6,7 @@
 /*   By: vdenisse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 11:30:09 by vdenisse          #+#    #+#             */
-/*   Updated: 2023/10/25 15:57:53 by vdenisse         ###   ########.fr       */
+/*   Updated: 2023/11/08 11:22:19 by vdenisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,10 +78,10 @@ int	check_end(t_game_info game_info)
 {
 	if (game_info.total_collectibles == game_info.collectibles_collected)
 	{
-		printf("game_succes\n");
+		ft_putstr_fd("game_succes\n", 1);
 		return (1);
 	}
-	printf("fuck outta here\n");
+	ft_putstr_fd("fuck outta here\n", 1);
 	return (0);
 }
 
@@ -106,9 +106,6 @@ int	move_player(t_data *data, int move)
 		end = &data->map[y + move][x];
 	}
 	change_tiles(data, start, end, mv_cpy);
-	if (data->game_info.stand_on_tile == data->tiles->end)
-		if (check_end(data->game_info))
-			mlx_loop_end(data->mlx);
 	return (0);
 }
 
@@ -132,11 +129,12 @@ int	move_start(t_data *data, int move)
 	if (move_invalid(data, move))
 		return (1);
 	finder(data, &y, &x, data->tiles->player->up->code);
-	printf("step count : [%d]\n", ++data->game_info.step_count);
+	++data->game_info.step_count;
 	move_player(data, move);
-	printf("[%d] collected out of [%d]\n",
-		data->game_info.collectibles_collected,
-		data->game_info.total_collectibles);
+	print_game_info(data);
+	if (data->game_info.stand_on_tile == data->tiles->end)
+		if (check_end(data->game_info))
+			mlx_loop_end(data->mlx);
 	data->map_seg = get_map_segment(data, 0);
 	update_screen(&data);
 	return (0);

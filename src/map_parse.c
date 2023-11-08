@@ -6,7 +6,7 @@
 /*   By: vdenisse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 14:14:40 by vdenisse          #+#    #+#             */
-/*   Updated: 2023/10/25 15:57:27 by vdenisse         ###   ########.fr       */
+/*   Updated: 2023/11/08 10:57:55 by vdenisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	get_dimensions(char *map_src, int *x, int *y)
 	*y = 0;
 	fd = open(map_src, O_RDONLY);
 	if (fd == -1)
-		return (1);
+		return (OPEN_ERR);
 	new_read = get_next_line(fd, 0);
 	*x = ft_strlen(new_read);
 	while (new_read != NULL)
@@ -52,7 +52,7 @@ int	get_dimensions(char *map_src, int *x, int *y)
 			free(new_read);
 			free(get_next_line(fd, 1));
 			close(fd);
-			return (1);
+			return (DIMENSION_ERR);
 		}
 		(*y)++;
 		free(new_read);
@@ -60,7 +60,7 @@ int	get_dimensions(char *map_src, int *x, int *y)
 	}
 	(*x)--;
 	close(fd);
-	return (0);
+	return (1);
 }
 
 int	malloc_map(t_map ***map, int x, int y)
@@ -72,16 +72,16 @@ int	malloc_map(t_map ***map, int x, int y)
 	new_map = *map;
 	new_map = (t_map **)malloc((y + 1) * sizeof(t_map **));
 	if (!map)
-		return (1);
+		return (MALLOC_ERR);
 	while (iter < y)
 	{
 		new_map[iter] = (t_map *)malloc((x) * sizeof(t_map));
 		if (!new_map[iter++])
-			return (1);
+			return (MALLOC_ERR);
 	}
 	new_map[y] = NULL;
 	*map = new_map;
-	return (0);
+	return (1);
 }
 
 int	line_to_map(t_map **map, char *new_read, t_tiles *tiles, int y)
@@ -111,7 +111,7 @@ int	map_to_map(t_map **map, char *map_src, t_tiles *tiles)
 	fd = open(map_src, O_RDONLY);
 	new_read = get_next_line(fd, 0);
 	if (!new_read)
-		return (1);
+		return (GNL_ERR);
 	while (new_read != NULL)
 	{
 		if (line_to_map(map, new_read, tiles, line))
@@ -119,38 +119,41 @@ int	map_to_map(t_map **map, char *map_src, t_tiles *tiles)
 			free(new_read);
 			free(get_next_line(fd, 1));
 			close(fd);
-			return (1);
+			return (GET_TILE_ERR);
 		}
 		free(new_read);
 		new_read = get_next_line(fd, 0);
 		line++;
 	}
 	close(fd);
-	return (0);
+	return (1);
 }
 
 int	map_parse(t_data **data_src, char *map_src, t_tiles *tiles)
 {
-	t_map	**map;
 	t_data	*data;
 	int		fd;
+	int		err;
 
-	map = NULL;
 	data = *data_src;
-	data->map = map;
+	data->map = NULL;
 	fd = open(map_src, O_RDONLY);
 	close(fd);
+	err = 1;
+	err *= check_extension(map_src);
 	if (fd == -1)
-		return (INVALID_NAME_ERR);
-	if (check_extension(map_src))
-		return (EXTENTION_ERR);
-	if (get_dimensions(map_src, &data->max_x, &data->max_y))
-		return (DIMENSION_ERR);
-	if (malloc_map(&data->map, data->max_x, data->max_y))
-		return (1);
-	if (map_to_map(data->map, map_src, tiles))
-		return (1);
-	if (map_check(data->max_x, data->max_y, data))
-		return (MAP_CONTENT_ERR);
+		return (INVALID_NAME_ERR * err);
+	err *= get_dimensions(map_src, &data->max_x, &data->max_y);
+	if (err % DIMENSION_ERR == 0)
+		return (err);
+	err *= malloc_map(&data->map, data->max_x, data->max_y);
+	if (err % MALLOC_ERR == 0)
+		return (err);
+	err *= map_to_map(data->map, map_src, tiles);
+	if (err % GET_TILE_ERR == 0)
+		return (err);
+	err *= map_check(data->max_x, data->max_y, data);
+	if (err != 1)
+		return (err);
 	return (0);
 }

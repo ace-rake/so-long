@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   flood.c                                            :+:      :+:    :+:   */
+/*   map_flood.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vdenisse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 11:22:44 by vdenisse          #+#    #+#             */
-/*   Updated: 2023/09/25 11:24:42 by vdenisse         ###   ########.fr       */
+/*   Updated: 2023/11/08 10:36:46 by vdenisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,6 @@ int	map_flood_check(t_map **map, int x, int y, t_tiles *tiles)
 		i++;
 	}
 	if (post_flood_check(map, x, y))
-		return (1);
-	return (0);
+		return (INCOMPLETABLE);
+	return (1);
 }

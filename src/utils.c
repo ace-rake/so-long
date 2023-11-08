@@ -6,7 +6,7 @@
 /*   By: vdenisse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 13:09:31 by vdenisse          #+#    #+#             */
-/*   Updated: 2023/09/25 13:14:07 by vdenisse         ###   ########.fr       */
+/*   Updated: 2023/11/08 11:14:51 by vdenisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ int	check_extension(char *map_src)
 	while (*map_src != '.')
 		map_src++;
 	if (ft_strncmp(map_src, ".ber\0", 5) == 0)
-		return (0);
-	return (1);
+		return (1);
+	return (EXTENTION_ERR);
 }
 
 t_tile	*get_tile(char c, t_tiles *tiles)
@@ -55,4 +55,15 @@ t_tile	*get_tile(char c, t_tiles *tiles)
 	if (c == tiles->end->code)
 		return (tiles->end);
 	return (NULL);
+}
+
+void	print_game_info(t_data *data)
+{
+	ft_putstr_fd("step count : [", 1);
+	ft_putnbr_fd(data->game_info.step_count, 1);
+	ft_putstr_fd("]\n[", 1);
+	ft_putnbr_fd(data->game_info.collectibles_collected, 1);
+	ft_putstr_fd("] collected out of [", 1);
+	ft_putnbr_fd(data->game_info.collectibles_collected, 1);
+	ft_putstr_fd("]\n", 1);
 }
