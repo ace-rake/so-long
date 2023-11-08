@@ -6,7 +6,7 @@
 /*   By: vdenisse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 14:25:10 by vdenisse          #+#    #+#             */
-/*   Updated: 2023/11/08 11:10:00 by vdenisse         ###   ########.fr       */
+/*   Updated: 2023/11/08 11:37:41 by vdenisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,6 @@
 # define TEXTURE_INT 128
 # define TILE_HEIGHT 8
 # define TILE_WIDTH 15
-# define WINDOW_HEIGHT TEXTURE_INT *TILE_HEIGHT
-# define WINDOW_WIDTH TEXTURE_INT *TILE_WIDTH
-# define PLAYER_UP PLAYER "-up_" TEXTURE_SIZE EXTENSION
 
 # define IMAGE_CREATION_ERR 521
 # define EXTENTION_ERR 839
@@ -103,13 +100,13 @@ typedef struct s_data
 	void		*img;
 	t_tiles		*tiles;
 	t_game_info	game_info;
-	int width;  //in pixels
-	int height; //in pixels
+	int			width;
+	int			height;
 	int			texture_size;
 	t_map		**map;
 	t_map_seg	**map_seg;
-	int max_x; //in tiles
-	int max_y; //in tiles
+	int			max_x;
+	int			max_y;
 }				t_data;
 
 //cleanup.c
@@ -154,7 +151,7 @@ int				update_screen(t_data **data_src);
 int				check_extension(char *map_src);
 t_tile			*get_tile(char c, t_tiles *tiles);
 int				finder(t_data *data, int *y, int *x, char code);
-void	print_game_info(t_data *data);
+void			print_game_info(t_data *data);
 
 /*
 void			loop(void);
