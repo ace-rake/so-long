@@ -6,7 +6,7 @@
 #    By: vdenisse <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/10 13:26:32 by vdenisse          #+#    #+#              #
-#    Updated: 2023/11/08 12:08:11 by vdenisse         ###   ########.fr        #
+#    Updated: 2023/11/08 13:31:44 by vdenisse         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ HEADERS := so_long.h
 
 SRCS := main.c
 TEST_SRC := test.c
-SRC := src/master.c	src/map_segmenter.c	src/game_movement.c	src/loop.c src/cleanup2.c src/map_flood.c src/print_map_textures.c src/event_handle.c src/utils.c src/creation.c src/cleanup.c src/map_parse.c src/gln/get_next_line_utils.c src/gln/get_next_line.c src/map_check.c main.c 
+SRC := src/master.c	src/map_segmenter.c	src/game_movement.c	src/loop.c src/cleanup2.c src/map_flood.c src/print_map_textures.c src/event_handle.c src/utils.c src/creation.c src/cleanup.c src/map_parse.c src/gln/get_next_line_utils.c src/gln/get_next_line.c src/gln/utils2.c src/map_check.c main.c 
 
 OBJDIR := obj
 SRC_OBJS := $(SRC:%.c=$(OBJDIR)/%.o)
