@@ -6,7 +6,7 @@
 /*   By: vdenisse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 11:30:09 by vdenisse          #+#    #+#             */
-/*   Updated: 2023/11/08 11:22:19 by vdenisse         ###   ########.fr       */
+/*   Updated: 2023/11/08 11:50:04 by vdenisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,10 @@ void	change_tiles(t_data *data, t_map *start, t_map *end, int mv_cpy)
 	else
 		(*start).tile = data->game_info.stand_on_tile;
 	if (end->tile == data->tiles->collectible)
+	{
+		ft_putstr_fd("YUM\n", 1);
 		data->game_info.collectibles_collected++;
+	}
 	data->game_info.stand_on_tile = end->tile;
 	if (mv_cpy == UP)
 		end->tile = data->tiles->player->up;
@@ -78,10 +81,10 @@ int	check_end(t_game_info game_info)
 {
 	if (game_info.total_collectibles == game_info.collectibles_collected)
 	{
-		ft_putstr_fd("game_succes\n", 1);
+		ft_putstr_fd("Game succes\n", 1);
 		return (1);
 	}
-	ft_putstr_fd("fuck outta here\n", 1);
+	ft_putstr_fd("There is still cheese to be eaten\n", 1);
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: vdenisse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 10:30:12 by vdenisse          #+#    #+#             */
-/*   Updated: 2023/10/30 11:00:16 by vdenisse         ###   ########.fr       */
+/*   Updated: 2023/11/08 11:52:05 by vdenisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ int	collectible_count(t_data *data, t_map **map)
 int	master(t_data *data)
 {
 	data->mlx = mlx_init();
-	data->width = WINDOW_WIDTH;
-	data->height = WINDOW_HEIGHT;
+	data->width = TEXTURE_INT * TILE_WIDTH;
+	data->height = TEXTURE_INT * TILE_HEIGHT;
 	data->texture_size = TEXTURE_INT;
 	data->win = mlx_new_window(data->mlx, data->width, data->height, "so_long");
 	data->img = NULL;

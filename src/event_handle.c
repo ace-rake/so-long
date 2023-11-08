@@ -6,7 +6,7 @@
 /*   By: vdenisse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 10:44:54 by vdenisse          #+#    #+#             */
-/*   Updated: 2023/11/08 11:07:38 by vdenisse         ###   ########.fr       */
+/*   Updated: 2023/11/08 11:51:49 by vdenisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ int	key_handle(int keycode, t_data **data_src)
 	return (1);
 }
 */
+
 int	click_close(t_data **data_src)
 {
 	t_data	*data;
