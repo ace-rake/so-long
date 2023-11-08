@@ -6,29 +6,23 @@
 #    By: vdenisse <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/10 13:26:32 by vdenisse          #+#    #+#              #
-#    Updated: 2023/10/20 16:50:24 by vdenisse         ###   ########.fr        #
+#    Updated: 2023/11/08 12:08:11 by vdenisse         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = so_long
 
 CC = gcc
-CFLAGS = -Wall -Werror -Wextra -g -O0  -I/usr/include -Imlx_linux #-fsanitize=address
+CFLAGS = -Wall -Werror -Wextra -g -O0  -I/usr/include -Imlx_linux
 
 HEADERS := so_long.h
 
 SRCS := main.c
 TEST_SRC := test.c
-SRC := $(wildcard src/*.c)
-GNL := $(wildcard src/gln/*.c)
+SRC := src/master.c	src/map_segmenter.c	src/game_movement.c	src/loop.c src/cleanup2.c src/map_flood.c src/print_map_textures.c src/event_handle.c src/utils.c src/creation.c src/cleanup.c src/map_parse.c src/gln/get_next_line_utils.c src/gln/get_next_line.c src/map_check.c main.c 
 
 OBJDIR := obj
-OBJS :=  $(SRCS:%.c=$(OBJDIR)/%.o)
 SRC_OBJS := $(SRC:%.c=$(OBJDIR)/%.o)
-GNL_OBJS := $(GNL:%.c=$(OBJDIR)/%.o)
-TEST_OBJS := $(TEST_SRC:%.c=$(OBJDIR)/%.o)
-
-NEC_OBJS = $(SRC_OBJS) $(GNL_OBJS)
 
 all: $(NAME)
 
@@ -37,14 +31,10 @@ $(OBJDIR)/%.o: %.c $(HEADERS)
 	@echo "Compiling $<"
 	@$(CC) $(CFLAGS) -c $< -o $@
 
-$(NAME): $(NEC_OBJS) $(OBJS)
+$(NAME): $(SRC_OBJS) $(OBJS)
 	@make -C src/libft
-	@$(CC) $(NEC_OBJS) $(OBJS) $(CFLAGS) -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -Lsrc/libft -lft -o $(NAME)
+	@$(CC) $(SRC_OBJS) $(OBJS) $(CFLAGS) -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -Lsrc/libft -lft -o $(NAME)
 	@echo "Compiled $@"
-
-test: $(NEC_OBJS) $(TEST_OBJS)
-	@make -C src/libft
-	$(CC) $(NEC_OBJS) $(TEST_OBJS) $(CFLAGS) -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -Lsrc/libft -lft -o test
 
 clean:
 	@make clean -C src/libft
@@ -53,7 +43,7 @@ clean:
 fclean:
 	@rm -rf $(OBJDIR)
 	@$(clean)
-	@rm $(NAME)
+	@rm -rf $(NAME)
 	@make fclean -C src/libft
 
 re:
