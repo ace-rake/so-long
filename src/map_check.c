@@ -6,7 +6,7 @@
 /*   By: vdenisse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 10:04:54 by vdenisse          #+#    #+#             */
-/*   Updated: 2023/11/08 11:00:29 by vdenisse         ###   ########.fr       */
+/*   Updated: 2023/11/08 13:11:07 by vdenisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,10 @@ int	map_check(int x, int y, t_data *data)
 	err *= map_wall_check(map_copy, x, y);
 	err *= map_content_check(map_copy, x, y);
 	if (err % INVALID_OUTER_WALL == 0)
+	{
+		free_map(data, map_copy);
 		return (err);
+	}
 	err *= map_flood_check(map_copy, x, y, data->tiles);
 	free_map(data, map_copy);
 	return (err);

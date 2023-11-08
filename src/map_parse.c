@@ -6,7 +6,7 @@
 /*   By: vdenisse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 14:14:40 by vdenisse          #+#    #+#             */
-/*   Updated: 2023/11/08 10:57:55 by vdenisse         ###   ########.fr       */
+/*   Updated: 2023/11/08 13:09:28 by vdenisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ int	get_dimensions(char *map_src, int *x, int *y)
 		return (OPEN_ERR);
 	new_read = get_next_line(fd, 0);
 	*x = ft_strlen(new_read);
+	if (*(x) == 0)
+		return (DIMENSION_ERR);
 	while (new_read != NULL)
 	{
 		if ((int)ft_strlen(new_read) != *x)

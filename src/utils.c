@@ -6,7 +6,7 @@
 /*   By: vdenisse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 13:09:31 by vdenisse          #+#    #+#             */
-/*   Updated: 2023/11/08 11:14:51 by vdenisse         ###   ########.fr       */
+/*   Updated: 2023/11/08 13:09:09 by vdenisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,6 @@ void	print_game_info(t_data *data)
 	ft_putstr_fd("]\n[", 1);
 	ft_putnbr_fd(data->game_info.collectibles_collected, 1);
 	ft_putstr_fd("] collected out of [", 1);
-	ft_putnbr_fd(data->game_info.collectibles_collected, 1);
+	ft_putnbr_fd(data->game_info.total_collectibles, 1);
 	ft_putstr_fd("]\n", 1);
 }
