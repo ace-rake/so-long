@@ -6,7 +6,7 @@
 /*   By: vdenisse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 16:43:44 by vdenisse          #+#    #+#             */
-/*   Updated: 2023/10/23 13:34:30 by vdenisse         ###   ########.fr       */
+/*   Updated: 2023/11/07 13:48:27 by vdenisse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,12 @@ typedef struct s_list
 	int				content;
 	struct s_list	*next;
 }					t_list;
+
+typedef struct	s_memkeeper
+{
+	void	**memarray;
+	int		mem_amount;
+}				t_memkeeper;
 
 int					ft_isalpha(int c);
 int					ft_isdigit(int c);
@@ -72,4 +78,7 @@ void				ft_lstiter(t_list *lst, void (*f)(int));
 
 int					ft_lstsize(t_list *lst);
 int					ft_strform(int to_free, char **str, ...);
+void				*ft_reallocarray(void *ptr, size_t nmemb, size_t size);
+void	*ft_lalloc(size_t size);
+void	free_mem(void);
 #endif
